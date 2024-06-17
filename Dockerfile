@@ -4,14 +4,14 @@
 ARG NODE_VERSION=20.14.0
 FROM node:${NODE_VERSION}-slim as base
 
-LABEL fly_launch_runtime="Remix"
+LABEL fly_launch_runtime="Next.js"
 
-# Remix app lives here
+# Next.js app lives here
 WORKDIR /app
 
 # Set production environment
 ENV NODE_ENV="production"
-ARG YARN_VERSION=1.22.19
+ARG YARN_VERSION=1.22.22
 RUN npm install -g yarn@$YARN_VERSION --force
 
 
