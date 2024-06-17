@@ -238,7 +238,7 @@ export default function FaceMesh() {
                 alt="Versus"
               />
             </div>
-            <div className="grid w-fit grid-cols-[minmax(220px,_1fr)_minmax(220px,_1fr)] gap-3 self-center sm:grid-cols-[minmax(250px,_1fr)_minmax(250px,_1fr)] md:grid-cols-[minmax(260px,_1fr)_minmax(260px,_1fr)]">
+            <div className="grid w-fit grid-cols-[minmax(160px,_1fr)_minmax(160px,_1fr)] gap-3 self-center sm:grid-cols-[minmax(250px,_1fr)_minmax(250px,_1fr)] md:grid-cols-[minmax(260px,_1fr)_minmax(260px,_1fr)]">
               <SingleCard
                 key={'first-card'}
                 ref={firstCharacterCardRef}
@@ -309,7 +309,7 @@ const SingleCard = forwardRef<API, SingleCardProps>(
               style={{
                 backgroundImage: 'url(' + swipingCharacterCard.url + ')'
               }}
-              className="relative h-[300px] w-[205px] rounded-lg bg-cover bg-center shadow-lg sm:w-[235px] md:w-[245px]"
+              className="relative h-[300px] w-[145px] rounded-lg bg-cover bg-center shadow-lg sm:w-[235px] md:w-[245px]"
             >
               <Switch>
                 <Case
