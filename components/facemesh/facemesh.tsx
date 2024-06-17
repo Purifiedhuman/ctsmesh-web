@@ -218,7 +218,7 @@ export default function FaceMesh() {
 
   return (
     <>
-      <div className="flex h-[70vh] flex-col justify-center">
+      <div className="flex h-[55vh] flex-col justify-center">
         <Switch>
           <Case condition={!canSwipe}>
             <Alert className="max-w-[400px] self-center">
@@ -230,12 +230,12 @@ export default function FaceMesh() {
             </Alert>
           </Case>
           <Default>
-            <div className="max-w-[400px] self-center">
+            <div className="mb-2 max-w-[400px] self-center">
               <Image
                 src="/static/versus.png"
-                width={200}
-                height={200}
-                alt="Picture of the author"
+                width={100}
+                height={50}
+                alt="Versus"
               />
             </div>
             <div className="grid w-fit grid-cols-[minmax(220px,_1fr)_minmax(220px,_1fr)] gap-3 self-center sm:grid-cols-[minmax(250px,_1fr)_minmax(250px,_1fr)] md:grid-cols-[minmax(260px,_1fr)_minmax(260px,_1fr)]">
