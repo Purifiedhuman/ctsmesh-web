@@ -230,26 +230,28 @@ export default function FaceMesh() {
               </Alert>
             </Case>
             <Default>
-              <SingleCard
-                key={'first-card'}
-                ref={firstCharacterCardRef}
-                swipingCharacterCard={firstCard}
-                onSwipeRequirementFulfilled={handleSwipeRequirementFulfilled}
-                onSwipeRequirementUnfulfilled={
-                  handleSwipeRequirementUnfulfilled
-                }
-                onSwipe={handleSwipe}
-              />
-              <SingleCard
-                key={'second-card'}
-                ref={secondCharacterCardRef}
-                swipingCharacterCard={secondCard}
-                onSwipeRequirementFulfilled={handleSwipeRequirementFulfilled}
-                onSwipeRequirementUnfulfilled={
-                  handleSwipeRequirementUnfulfilled
-                }
-                onSwipe={handleSwipe}
-              />
+              <div className="grid grid-cols-[minmax(220px,_1fr)_minmax(220px,_1fr)] gap-3 sm:grid-cols-[minmax(250px,_1fr)_minmax(250px,_1fr)] md:grid-cols-[minmax(260px,_1fr)_minmax(260px,_1fr)]">
+                <SingleCard
+                  key={'first-card'}
+                  ref={firstCharacterCardRef}
+                  swipingCharacterCard={firstCard}
+                  onSwipeRequirementFulfilled={handleSwipeRequirementFulfilled}
+                  onSwipeRequirementUnfulfilled={
+                    handleSwipeRequirementUnfulfilled
+                  }
+                  onSwipe={handleSwipe}
+                />
+                <SingleCard
+                  key={'second-card'}
+                  ref={secondCharacterCardRef}
+                  swipingCharacterCard={secondCard}
+                  onSwipeRequirementFulfilled={handleSwipeRequirementFulfilled}
+                  onSwipeRequirementUnfulfilled={
+                    handleSwipeRequirementUnfulfilled
+                  }
+                  onSwipe={handleSwipe}
+                />
+              </div>
             </Default>
           </Switch>
         </div>
@@ -281,13 +283,13 @@ const SingleCard = forwardRef<API, SingleCardProps>(
     ref
   ) => {
     return (
-      <div className="h-[315px] w-full max-w-[275px] rounded-xl border-4 p-1">
+      <div className="h-[315px] rounded-xl border-4 p-1">
         <div className="cursor-grab" key={swipingCharacterCard.name}>
           <TinderCard
             swipeRequirementType="position"
             ref={ref}
             className="absolute"
-            swipeThreshold={300}
+            swipeThreshold={50}
             onSwipeRequirementFulfilled={(dir) =>
               onSwipeRequirementFulfilled(swipingCharacterCard.id)
             }
@@ -300,7 +302,7 @@ const SingleCard = forwardRef<API, SingleCardProps>(
               style={{
                 backgroundImage: 'url(' + swipingCharacterCard.url + ')'
               }}
-              className="relative h-[300px] w-[80vw] max-w-[260px] rounded-lg bg-cover bg-center shadow-lg"
+              className="relative h-[300px] w-[205px] rounded-lg bg-cover bg-center shadow-lg sm:w-[235px] md:w-[245px]"
             >
               <Switch>
                 <Case
