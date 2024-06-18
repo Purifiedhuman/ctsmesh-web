@@ -1,6 +1,6 @@
 {
-  "name": "CTS Mesh",
-  "short_name": "CTS Mesh",
+  "name": "CTSMesh",
+  "short_name": "CTSMesh",
   "theme_color": "#a78bfa",
   "background_color": "#374151",
   "display": "standalone",
