@@ -7,7 +7,7 @@ import TinderCard from 'react-tinder-card';
 import { v4 as uuid } from 'uuid';
 import { Alert, AlertDescription, AlertTitle } from '../ui/alert';
 import Image from 'next/image';
-
+import AptosTransactionButton from '../AptosTransactionButton';
 type Direction = 'left' | 'right' | 'up' | 'down';
 
 type API = {
@@ -218,6 +218,7 @@ export default function FaceMesh() {
 
   return (
     <>
+                      <AptosTransactionButton />
       <div className="flex h-[55vh] flex-col justify-center">
         <Switch>
           <Case condition={!canSwipe}>

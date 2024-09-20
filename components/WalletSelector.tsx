@@ -90,7 +90,6 @@ function ConnectWalletDialog({ close }: ConnectWalletDialogProps) {
   const { aptosConnectWallets, availableWallets, installableWallets } = groupAndSortWallets(wallets);
   const hasAptosConnectWallets = !!aptosConnectWallets.length;
 
-console.log('Detected wallets:', wallets);
   return (
     <DialogContent className="max-h-screen overflow-auto">
       <AboutAptosConnect renderEducationScreen={renderEducationScreen}>
