@@ -19,7 +19,7 @@ import {
   const config = new AptosConfig({ network: Network.TESTNET });
   const aptos = new Aptos(config);
   //set Contract Module Address here
-  const moduleAddress = '0xa3e68aa8976c1e11e2ff6eaefacf0fe237b90e245146184cc0e1d98296688b84'
+  const moduleAddress = '0x5a9cc5025c35fbb6c2181c5816d1ebe48a5e0886b2ae6f6279a4b96d170e4edb'
 
 export default function AptosTransactionButton() {
   const { account, connected, disconnect, wallet , signAndSubmitTransaction } = useWallet();
