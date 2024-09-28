@@ -15,45 +15,70 @@ import {
   Aptos,
   AptosConfig,
   InputViewFunctionData,
-  Network
+  Network,
+  Ed25519PrivateKey,
+  Deserializer,
+  SimpleTransaction
 } from '@aptos-labs/ts-sdk';
 
-// 0. Setup the client and test accounts
-const config = new AptosConfig({ network: Network.TESTNET });
-const aptos = new Aptos(config);
-//set Contract Module Address here
-const moduleAddress =
-  '0x5a9cc5025c35fbb6c2181c5816d1ebe48a5e0886b2ae6f6279a4b96d170e4edb';
+  // 0. Setup the client and test accounts
+  const config = new AptosConfig({ network: Network.TESTNET });
+  const aptos = new Aptos(config);
+
+  const moduleAddress = process.env.NEXT_PUBLIC_MODULE_ADDRESS || '';
+  const sponsorPrivateKeyHex = process.env.NEXT_PUBLIC_SPONSOR_PRIVATE_KEY_HEX || '';
 
 export default function AptosTransactionButton() {
-  const { account, connected, disconnect, wallet, signAndSubmitTransaction } =
-    useWallet();
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState<string | null>(null);
-  const [recipient, setRecipient] = useState('');
+  const { account, connected, disconnect, wallet , signAndSubmitTransaction } = useWallet();
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const [success, setSuccess] = useState<string | null>(null)
+  const [recipient, setRecipient] = useState('')
+  const [sponsor, setSponsorAddress] = useState<string | null>(null);
 
   const sendTransaction = async () => {
     if (!wallet || !account) {
       setError('Please connect your wallet first.');
       return;
     }
-
-    setIsLoading(true);
-    setError(null);
-    setSuccess(null);
-    const transaction: InputTransactionData = {
-      data: {
-        function: `${moduleAddress}::alpha_voting::vote_alpha`,
-        functionArguments: [recipient]
-      }
-    };
+    console.log("\n=== Submitting Transaction ===\n");
     try {
-      const response = await signAndSubmitTransaction(transaction);
-      await aptos.waitForTransaction({ transactionHash: response.hash });
-
-      console.log('Transaction successful!', response);
-      setSuccess(`Transaction sent successfully! Hash: ${response.hash}`);
+      const privateKey = new Ed25519PrivateKey(sponsorPrivateKeyHex);
+      let sponsor = Account.fromPrivateKey({privateKey});
+      setSponsorAddress(sponsor.accountAddress.toString());
+      const transaction = await aptos.transaction.build.simple({
+        sender: sponsor.accountAddress,
+        withFeePayer: true,
+        data: {
+            // All transactions on Aptos are implemented via smart contracts.
+            function:`${moduleAddress}::alpha_voting::vote_alpha`,
+            functionArguments: [recipient],
+        },
+      });
+      console.log("Built the transaction!")
+ 
+      // 2. Sign
+      console.log("\n=== 2. Signing transaction ===\n");
+      const aliceSenderAuthenticator = aptos.transaction.sign({
+        signer: sponsor,
+        transaction,
+      });
+      const bobSenderAuthenticator = aptos.transaction.signAsFeePayer({
+          signer: sponsor,
+          transaction
+      })
+      console.log("\n=== 4. Submitting transaction ===\n");
+      const committedTransaction = await aptos.transaction.submit.simple({
+          transaction,
+          senderAuthenticator: aliceSenderAuthenticator,
+          feePayerAuthenticator: bobSenderAuthenticator,
+      });
+      console.log("Submitted transaction hash:", committedTransaction.hash);
+      // 5. Wait for results
+      console.log("\n=== 5. Waiting for result of transaction ===\n");
+      const executedTransaction = await aptos.waitForTransaction({ transactionHash: committedTransaction.hash });
+      console.log("Transaction successful!", executedTransaction)
+      setSuccess(`Transaction sent successfully! Hash: ${executedTransaction.hash}`)
     } catch (error) {
       console.error('Transaction failed:', error);
       setError('Transaction failed. Please try again.');
