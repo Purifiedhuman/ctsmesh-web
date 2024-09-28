@@ -3,6 +3,7 @@ import { cn } from '@/lib/utils';
 import { MobileSidebar } from './mobile-sidebar';
 import { UserNav } from './user-nav';
 import Link from 'next/link';
+import { WalletSelector } from '../WalletSelector';
 
 export default function Header() {
   return (
@@ -30,6 +31,7 @@ export default function Header() {
 
         <div className="flex items-center gap-2">
           <UserNav />
+          <WalletSelector />
           <ThemeToggle />
         </div>
       </nav>

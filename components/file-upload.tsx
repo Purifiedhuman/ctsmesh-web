@@ -21,7 +21,7 @@ export default function FileUpload({
   const { toast } = useToast();
   const onDeleteFile = (key: string) => {
     const files = value;
-    let filteredFiles = files.filter((item) => item.key !== key);
+    const filteredFiles = files.filter((item) => item.key !== key);
     onRemove(filteredFiles);
   };
   const onUpdateFile = (newFiles: any[]) => {

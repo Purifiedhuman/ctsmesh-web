@@ -200,7 +200,7 @@ export const CreateProfileOne: React.FC<ProfileFormType> = ({
             <li key={step.name} className="md:flex-1">
               {currentStep > index ? (
                 <div className="group flex w-full flex-col border-l-4 border-sky-600 py-2 pl-4 transition-colors md:border-l-0 md:border-t-4 md:pb-0 md:pl-0 md:pt-4">
-                  <span className="text-sm font-medium text-sky-600 transition-colors ">
+                  <span className="text-sm font-medium text-sky-600 transition-colors">
                     {step.id}
                   </span>
                   <span className="text-sm font-medium">{step.name}</span>
@@ -403,11 +403,11 @@ export const CreateProfileOne: React.FC<ProfileFormType> = ({
                           className="absolute right-8"
                           onClick={() => remove(index)}
                         >
-                          <Trash2Icon className="h-4 w-4 " />
+                          <Trash2Icon className="h-4 w-4" />
                         </Button>
                         {errors?.jobs?.[index] && (
                           <span className="alert absolute right-8">
-                            <AlertTriangleIcon className="h-4 w-4   text-red-700" />
+                            <AlertTriangleIcon className="h-4 w-4 text-red-700" />
                           </span>
                         )}
                       </AccordionTrigger>
