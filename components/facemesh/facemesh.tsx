@@ -218,7 +218,7 @@ export default function FaceMesh() {
 
   return (
     <>
-                      <AptosTransactionButton />
+      <AptosTransactionButton />
       <div className="flex h-[55vh] flex-col justify-center">
         <Switch>
           <Case condition={!canSwipe}>
@@ -337,3 +337,5 @@ const SingleCard = forwardRef<API, SingleCardProps>(
     );
   }
 );
+
+SingleCard.displayName = 'SingleCard';

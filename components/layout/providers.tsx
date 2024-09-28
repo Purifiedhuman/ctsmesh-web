@@ -2,7 +2,7 @@
 import React from 'react';
 import ThemeProvider from './ThemeToggle/theme-provider';
 import { SessionProvider, SessionProviderProps } from 'next-auth/react';
-import { WalletProvider } from "../WalletProvider";
+import { WalletProvider } from '../WalletProvider';
 export default function Providers({
   session,
   children
@@ -14,10 +14,8 @@ export default function Providers({
     <>
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
         <SessionProvider session={session}>
-          <WalletProvider>
-          {children}
-          </WalletProvider>
-          </SessionProvider>
+          <WalletProvider>{children}</WalletProvider>
+        </SessionProvider>
       </ThemeProvider>
     </>
   );

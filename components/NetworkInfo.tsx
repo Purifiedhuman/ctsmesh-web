@@ -1,8 +1,8 @@
-import { Network } from "@aptos-labs/ts-sdk";
-import { useWallet } from "@aptos-labs/wallet-adapter-react";
+import { Network } from '@aptos-labs/ts-sdk';
+import { useWallet } from '@aptos-labs/wallet-adapter-react';
 // Internal components
-import { DisplayValue, LabelValueGrid } from "@/components/LabelValueGrid";
-import { isValidNetworkName } from "@/utils/helpers";
+import { DisplayValue, LabelValueGrid } from '@/components/LabelValueGrid';
+import { isValidNetworkName } from './utils/helpers';
 
 export function NetworkInfo() {
   const { network } = useWallet();
@@ -12,29 +12,34 @@ export function NetworkInfo() {
       <LabelValueGrid
         items={[
           {
-            label: "Network name",
+            label: 'Network name',
             value: (
               <DisplayValue
-                value={network?.name ?? "Not Present"}
+                value={network?.name ?? 'Not Present'}
                 isCorrect={isValidNetworkName(network)}
-                expected={Object.values<string>(Network).join(", ")}
+                expected={Object.values<string>(Network).join(', ')}
               />
-            ),
+            )
           },
           {
-            label: "URL",
+            label: 'URL',
             value: network?.url ? (
-              <a href={network.url} target="_blank" rel="noreferrer" className="text-blue-600 dark:text-blue-300">
+              <a
+                href={network.url}
+                target="_blank"
+                rel="noreferrer"
+                className="text-blue-600 dark:text-blue-300"
+              >
                 {network.url}
               </a>
             ) : (
-              "Not Present"
-            ),
+              'Not Present'
+            )
           },
           {
-            label: "Chain ID",
-            value: <p>{network?.chainId ?? "Not Present"}</p>,
-          },
+            label: 'Chain ID',
+            value: <p>{network?.chainId ?? 'Not Present'}</p>
+          }
         ]}
       />
     </div>

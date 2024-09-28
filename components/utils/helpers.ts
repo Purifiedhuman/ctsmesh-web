@@ -1,5 +1,5 @@
-import { Network } from "@aptos-labs/ts-sdk";
-import { NetworkInfo, isAptosNetwork } from "@aptos-labs/wallet-adapter-react";
+import { Network } from '@aptos-labs/ts-sdk';
+import { NetworkInfo, isAptosNetwork } from '@aptos-labs/wallet-adapter-react';
 
 export const isValidNetworkName = (network: NetworkInfo | null) => {
   if (isAptosNetwork(network)) {

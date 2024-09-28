@@ -1,6 +1,6 @@
-import { useWallet } from "@aptos-labs/wallet-adapter-react";
+import { useWallet } from '@aptos-labs/wallet-adapter-react';
 // Internal components
-import { LabelValueGrid, DisplayValue } from "@/components/LabelValueGrid";
+import { LabelValueGrid, DisplayValue } from '@/components/LabelValueGrid';
 
 export function AccountInfo() {
   const { account } = useWallet();
@@ -10,20 +10,28 @@ export function AccountInfo() {
       <LabelValueGrid
         items={[
           {
-            label: "Address",
-            value: <DisplayValue value={account?.address ?? "Not Present"} isCorrect={!!account?.address} />,
-          },
-          {
-            label: "Public key",
+            label: 'Address',
             value: (
-              <DisplayValue value={account?.publicKey.toString() ?? "Not Present"} isCorrect={!!account?.publicKey} />
-            ),
+              <DisplayValue
+                value={account?.address ?? 'Not Present'}
+                isCorrect={!!account?.address}
+              />
+            )
           },
           {
-            label: "ANS name",
-            subLabel: "(only if attached)",
-            value: <p>{account?.ansName ?? "Not Present"}</p>,
+            label: 'Public key',
+            value: (
+              <DisplayValue
+                value={account?.publicKey.toString() ?? 'Not Present'}
+                isCorrect={!!account?.publicKey}
+              />
+            )
           },
+          {
+            label: 'ANS name',
+            subLabel: '(only if attached)',
+            value: <p>{account?.ansName ?? 'Not Present'}</p>
+          }
         ]}
       />
     </div>
