@@ -1,47 +1,56 @@
 #facemesh-root {
   align-self: center;
-  max-width: 380px;
-  height: 550px;
+  width: 100%;
+  height: 100vw;
+  max-width: 100vw;
+  max-height: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
+  margin: 0 auto;
+  padding: 16px;
 }
-@media (min-width: 480px) and (min-height: 480px) {
+
+@media (min-width: 480px) {
   #facemesh-root {
-    width: 380px;
+    width: 90vw;
+    height: 90vw;
+    max-width: 550px;
+    max-height: 550px;
     margin: 16px auto;
     background: #fff;
     border: 16px solid #000;
-    height: 550px;
     border-radius: 32px;
     box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 0.2);
   }
 }
 
 .swiper-tinder {
-  padding: 1px;
   width: 100%;
   height: 100%;
 }
 
 .swiper-slide {
   border-radius: 16px;
-  &::before {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 50%;
-    pointer-events: none;
-    content: '';
-    background-image: linear-gradient(
-      to top,
-      rgba(0, 0, 0, 0.75) 25%,
-      rgba(0, 0, 0, 0)
-    );
-    z-index: 10;
-  }
+  overflow: hidden;
+  position: relative;
+}
+
+.swiper-slide::before {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 50%;
+  pointer-events: none;
+  content: '';
+  background-image: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.75) 25%,
+    rgba(0, 0, 0, 0)
+  );
+  z-index: 10;
 }
 
 .demo-slide-name {
@@ -67,8 +76,8 @@
   font-weight: bold;
   color: #555;
   text-shadow: 0px 1px 0px #fff;
+}
 
-  &::before {
-    display: none;
-  }
+.demo-empty-slide::before {
+  display: none;
 }

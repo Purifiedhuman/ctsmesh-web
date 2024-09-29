@@ -21,13 +21,13 @@ type CharacterCardInfo = {
 const kols: CharacterCardInfo[] = [
   {
     id: uuid(),
-    name: 'Yano',
-    url: '/static/kol_images/yano_tweet.png'
+    name: 'Mert',
+    url: '/static/kol_images/helius_tweet.png'
   },
   {
     id: uuid(),
-    name: 'CZ',
-    url: '/static/kol_images/cz_bnb_tweet.png'
+    name: 'Binance',
+    url: '/static/kol_images/binance_tweet.png'
   },
   {
     id: uuid(),
@@ -58,22 +58,12 @@ const kols: CharacterCardInfo[] = [
     id: uuid(),
     name: 'Ardizor',
     url: '/static/kol_images/ardizor_tweet.png'
+  },
+  {
+    id: uuid(),
+    name: 'Yano',
+    url: '/static/kol_images/yano_tweet.png'
   }
-  // {
-  //   id: uuid(),
-  //   name: 'Ryan Wyatt',
-  //   url: '/static/kol_images/RyanWyatt.jpg'
-  // },
-  // {
-  //   id: uuid(),
-  //   name: 'Slapp Jakke',
-  //   url: '/static/kol_images/Slappjakke.eth.jpg'
-  // },
-  // {
-  //   id: uuid(),
-  //   name: 'Vitalik',
-  //   url: '/static/kol_images/vitalik.eth.jpg'
-  // }
 ];
 
 type OngoingStatus = 'pending' | 'approving' | 'rejecting';
