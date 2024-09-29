@@ -98,10 +98,10 @@ export default function FaceMesh() {
     try {
       switch (direction) {
         case 'left':
-          await sendTransactionMutation.mutateAsync({ decision: 'alpha' });
+          await sendTransactionMutation.mutateAsync({ decision: 'beta' });
           break;
         case 'right':
-          await sendTransactionMutation.mutateAsync({ decision: 'beta' });
+          await sendTransactionMutation.mutateAsync({ decision: 'alpha' });
           break;
       }
     } catch (error) {
