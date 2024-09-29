@@ -21,22 +21,26 @@ const sponsorPrivateKeyHex =
 type VotingDecision = 'alpha' | 'beta';
 type SendTransactionArgs = {
   decision: VotingDecision;
+  recipient: string;
+};
+type Props = {
+  recipientToQuery?: string;
 };
 
-export default function useAptosTransaction() {
+export default function useAptosTransaction({ recipientToQuery }: Props = {}) {
   const { account, connected, disconnect, wallet, signAndSubmitTransaction } =
     useWallet();
-  const [recipient, setRecipient] = useState('');
   const [sponsor, setSponsorAddress] = useState<string | null>(null);
 
   const sendTransactionMutation = useMutation({
     mutationFn: async (args: SendTransactionArgs) => {
+      const { decision, recipient } = args;
       if (!wallet || !account) {
         throw new Error('Please connect your wallet first.');
       }
 
       const contractFunction =
-        args.decision === 'alpha' ? 'vote_alpha' : 'vote_beta';
+        decision === 'alpha' ? 'vote_alpha' : 'vote_beta';
       console.log('\n=== Submitting Transaction ===\n');
 
       const privateKey = new Ed25519PrivateKey(sponsorPrivateKeyHex);
@@ -88,19 +92,18 @@ export default function useAptosTransaction() {
 
       const payload: InputViewFunctionData = {
         function: `${moduleAddress}::alpha_voting::view_alpha_votes`,
-        functionArguments: [recipient]
+        functionArguments: [recipientToQuery]
       };
 
       return aptos.view({ payload });
     },
-    enabled: !!recipient
+    enabled: !!recipientToQuery && recipientToQuery.length > 0
   });
 
   return {
     account,
     sendTransactionMutation,
     readTransactionQuery,
-    recipientState: [recipient, setRecipient] as const,
     sponsor
   };
 }

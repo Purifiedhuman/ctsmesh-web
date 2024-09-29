@@ -85,7 +85,6 @@ type ExtendedCharacterCardInfo = CharacterCardInfo & {
 };
 
 export default function FaceMesh() {
-  const { sendTransactionMutation } = useAptosTransaction();
   const [currentKols, setCurrentKols] = useState<ExtendedCharacterCardInfo[]>(
     kols.map((kol) => ({
       ...kol,
@@ -93,15 +92,24 @@ export default function FaceMesh() {
       finalStatus: 'pending'
     }))
   );
+  const { sendTransactionMutation } = useAptosTransaction();
 
   const handleSwipe = async (swiper: any, direction: 'left' | 'right') => {
+    const activeCard = currentKols[swiper.activeIndex - 1];
+
     try {
       switch (direction) {
         case 'left':
-          await sendTransactionMutation.mutateAsync({ decision: 'beta' });
+          await sendTransactionMutation.mutateAsync({
+            decision: 'beta',
+            recipient: activeCard.name
+          });
           break;
         case 'right':
-          await sendTransactionMutation.mutateAsync({ decision: 'alpha' });
+          await sendTransactionMutation.mutateAsync({
+            decision: 'alpha',
+            recipient: activeCard.name
+          });
           break;
       }
     } catch (error) {

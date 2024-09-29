@@ -7,13 +7,11 @@ import { Label } from '@/components/ui/label';
 import useAptosTransaction from '@/hooks/useAptosTransaction';
 
 import { AlertCircle, CheckCircle } from 'lucide-react';
+import { useState } from 'react';
 
 export default function AptosTransactionButton() {
-  const {
-    account,
-    recipientState: [recipient, setRecipient],
-    sendTransactionMutation
-  } = useAptosTransaction();
+  const [recipient, setRecipient] = useState('');
+  const { account, sendTransactionMutation } = useAptosTransaction();
 
   return (
     <div className="mx-auto flex max-w-md flex-col items-center gap-4 p-6">
@@ -31,7 +29,7 @@ export default function AptosTransactionButton() {
           </div>
           <Button
             onClick={() =>
-              sendTransactionMutation.mutate({ decision: 'alpha' })
+              sendTransactionMutation.mutate({ decision: 'alpha', recipient })
             }
             disabled={sendTransactionMutation.isPending}
             className="w-full"
