@@ -145,9 +145,9 @@ export default function FaceMesh() {
 
       <div className="mt-4 flex justify-center gap-4">
         <Button
-          onClick={() => {
-            handleSwipe(null, 'left');
-          }}
+          // onClick={() => {
+          //   handleSwipe(null, 'left');
+          // }}
           className="swiper-tinder-button swiper-tinder-button-no"
         >
           Beta
@@ -161,9 +161,9 @@ export default function FaceMesh() {
           </svg>
         </Button>
         <Button
-          onClick={() => {
-            handleSwipe(null, 'right');
-          }}
+          // onClick={() => {
+          //   handleSwipe(null, 'right');
+          // }}
           className="swiper-tinder-button swiper-tinder-button-yes"
         >
           Alpha

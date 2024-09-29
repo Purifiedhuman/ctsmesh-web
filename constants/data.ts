@@ -147,11 +147,11 @@ export const navItems: NavItem[] = [
     href: '/dashboard/facemesh',
     icon: 'laugh',
     label: 'facemesh'
-  },
-  {
-    title: 'Login',
-    href: '/',
-    icon: 'login',
-    label: 'login'
   }
+  // {
+  //   title: 'Login',
+  //   href: '/',
+  //   icon: 'login',
+  //   label: 'login'
+  // }
 ];
