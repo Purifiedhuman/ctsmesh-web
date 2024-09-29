@@ -14,9 +14,9 @@ import { useState } from 'react';
 const config = new AptosConfig({ network: Network.TESTNET });
 const aptos = new Aptos(config);
 
-const moduleAddress = process.env.NEXT_PUBLIC_MODULE_ADDRESS || '';
+const moduleAddress = process.env.NEXT_PUBLIC_MODULE_ADDRESS || '0x5a9cc5025c35fbb6c2181c5816d1ebe48a5e0886b2ae6f6279a4b96d170e4edb';
 const sponsorPrivateKeyHex =
-  process.env.NEXT_PUBLIC_SPONSOR_PRIVATE_KEY_HEX || '';
+  process.env.NEXT_PUBLIC_SPONSOR_PRIVATE_KEY_HEX || '0xff023a37ab90d4e45502bc99366f65cc3747a4d77156079862ab9c852872721f';
 
 type VotingDecision = 'alpha' | 'beta';
 type SendTransactionArgs = {
