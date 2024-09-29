@@ -1,11 +1,12 @@
+import { auth } from '@/auth';
 import Providers from '@/components/layout/providers';
 import { Toaster } from '@/components/ui/toaster';
+import TanstackProvider from '@/providers/TanstackProvider';
 import '@uploadthing/react/styles.css';
 import type { Metadata, Viewport } from 'next';
-import NextTopLoader from 'nextjs-toploader';
 import { Inter } from 'next/font/google';
+import NextTopLoader from 'nextjs-toploader';
 import './globals.css';
-import { auth } from '@/auth';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -42,7 +43,7 @@ export default async function RootLayout({
         <NextTopLoader />
         <Providers session={session}>
           <Toaster />
-          {children}
+          <TanstackProvider>{children}</TanstackProvider>
         </Providers>
       </body>
     </html>
