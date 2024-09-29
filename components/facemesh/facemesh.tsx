@@ -21,59 +21,59 @@ type CharacterCardInfo = {
 const kols: CharacterCardInfo[] = [
   {
     id: uuid(),
-    name: 'Angela Nikolau',
-    url: '/static/kol_images/AngelaNikolau.jpg'
+    name: 'Yano',
+    url: '/static/kol_images/yano_tweet.png'
   },
   {
     id: uuid(),
-    name: 'Ash Crypto',
-    url: '/static/kol_images/AshCrypto.jpg'
+    name: 'CZ',
+    url: '/static/kol_images/cz_bnb_tweet.png'
   },
   {
     id: uuid(),
-    name: 'Crypto Jack',
-    url: '/static/kol_images/CryptoJack.jpg'
+    name: 'ElonMusk',
+    url: '/static/kol_images/elon_tweet.png'
   },
   {
     id: uuid(),
-    name: 'Crypto Kaduna',
-    url: '/static/kol_images/CryptoKaduna.jpg'
+    name: 'AshCrypto',
+    url: '/static/kol_images/ash_tweet.png'
   },
   {
     id: uuid(),
-    name: 'Elon Musk',
-    url: '/static/kol_images/ElonMusk.jpg'
-  },
-  {
-    id: uuid(),
-    name: 'Irene Zhao',
-    url: '/static/kol_images/IreneZhao.jpg'
-  },
-  {
-    id: uuid(),
-    name: 'Laura Shin',
-    url: '/static/kol_images/laurashin.jpg'
-  },
-  {
-    id: uuid(),
-    name: 'Lukeloo',
-    url: '/static/kol_images/lukeloo.apt.jpg'
-  },
-  {
-    id: uuid(),
-    name: 'Ryan Wyatt',
-    url: '/static/kol_images/RyanWyatt.jpg'
-  },
-  {
-    id: uuid(),
-    name: 'Slapp Jakke',
-    url: '/static/kol_images/Slappjakke.eth.jpg'
+    name: 'Aptos',
+    url: '/static/kol_images/aptos_tweet.png'
   },
   {
     id: uuid(),
     name: 'Vitalik',
-    url: '/static/kol_images/vitalik.eth.jpg'
+    url: '/static/kol_images/vitalik_tweet.png'
+  },
+  {
+    id: uuid(),
+    name: 'Avery',
+    url: '/static/kol_images/avery_tweet.png'
+  },
+  {
+    id: uuid(),
+    name: 'Ardizor',
+    url: '/static/kol_images/ardizor_tweet.png'
   }
+  // {
+  //   id: uuid(),
+  //   name: 'Ryan Wyatt',
+  //   url: '/static/kol_images/RyanWyatt.jpg'
+  // },
+  // {
+  //   id: uuid(),
+  //   name: 'Slapp Jakke',
+  //   url: '/static/kol_images/Slappjakke.eth.jpg'
+  // },
+  // {
+  //   id: uuid(),
+  //   name: 'Vitalik',
+  //   url: '/static/kol_images/vitalik.eth.jpg'
+  // }
 ];
 
 type OngoingStatus = 'pending' | 'approving' | 'rejecting';

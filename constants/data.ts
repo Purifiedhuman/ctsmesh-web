@@ -143,10 +143,10 @@ export const navItems: NavItem[] = [
   //   label: 'kanban'
   // },
   {
-    title: 'Facemesh',
+    title: 'Cook',
     href: '/dashboard/facemesh',
-    icon: 'laugh',
-    label: 'facemesh'
+    icon: 'kanban',
+    label: 'cook'
   }
   // {
   //   title: 'Login',
