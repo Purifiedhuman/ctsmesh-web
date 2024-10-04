@@ -11,6 +11,7 @@ import { toast } from '../ui/use-toast.ts';
 import EffectTinder from './effect-tinder.js';
 import './effect-tinder.scss';
 import './facemesh.scss';
+import { Popup } from './Popup.tsx';
 
 type CharacterCardInfo = {
   id: string;
@@ -83,25 +84,30 @@ export default function FaceMesh() {
     }))
   );
   const { sendTransactionMutation } = useAptosTransaction();
-
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  // Add this state at the top of your component
+  const [rewardAmount, setRewardAmount] = useState<number>(0);
   const handleSwipe = async (swiper: any, direction: 'left' | 'right') => {
     const activeCard = currentKols[swiper.activeIndex - 1];
 
     try {
-      switch (direction) {
-        case 'left':
-          await sendTransactionMutation.mutateAsync({
-            decision: 'beta',
-            recipient: activeCard.name
-          });
-          break;
-        case 'right':
-          await sendTransactionMutation.mutateAsync({
-            decision: 'alpha',
-            recipient: activeCard.name
-          });
-          break;
-      }
+      // switch (direction) {
+      //   case 'left':
+      //     await sendTransactionMutation.mutateAsync({
+      //       decision: 'beta',
+      //       recipient: activeCard.name
+      //     });
+      //     break;
+      //   case 'right':
+      //     await sendTransactionMutation.mutateAsync({
+      //       decision: 'alpha',
+      //       recipient: activeCard.name
+      //     });
+      //     break;
+      // }
+      // Show the popup after successful swipe
+      setIsPopupOpen(true);
+      setRewardAmount(0);
     } catch (error) {
       toast({
         title: `Error while sending transaction ${error}}`
@@ -148,7 +154,7 @@ export default function FaceMesh() {
           // }}
           className="swiper-tinder-button swiper-tinder-button-no"
         >
-          Beta
+          Noise
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="48"
@@ -175,6 +181,11 @@ export default function FaceMesh() {
           </svg>
         </Button>
       </div>
+      <Popup 
+        isOpen={isPopupOpen} 
+        onClose={() => setIsPopupOpen(false)}
+        rewardText={`You earned ${rewardAmount} diamonds!`}
+      />
     </div>
   );
 }

@@ -81,3 +81,8 @@
 .demo-empty-slide::before {
   display: none;
 }
+.box {
+  width: 200px;
+  height: 200px;
+  background: var(--accent);
+}
