@@ -83,31 +83,42 @@ export default function FaceMesh() {
       finalStatus: 'pending'
     }))
   );
-  const { sendTransactionMutation } = useAptosTransaction();
+  const { sendTransactionMutation , account, readTransactionMutation} = useAptosTransaction();
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   // Add this state at the top of your component
   const [rewardAmount, setRewardAmount] = useState<number>(0);
   const handleSwipe = async (swiper: any, direction: 'left' | 'right') => {
     const activeCard = currentKols[swiper.activeIndex - 1];
-
+    if (!account?.address) {
+      toast({
+        title: 'Error',
+        description: 'Please connect your wallet first.'
+      });
+      return;
+    }
     try {
       // switch (direction) {
       //   case 'left':
       //     await sendTransactionMutation.mutateAsync({
       //       decision: 'beta',
-      //       recipient: activeCard.name
+      //       recipient: activeCard.name,
+      //       reward_address: account.address
       //     });
       //     break;
       //   case 'right':
       //     await sendTransactionMutation.mutateAsync({
       //       decision: 'alpha',
-      //       recipient: activeCard.name
+      //       recipient: activeCard.name,
+      //       reward_address: account.address
       //     });
+
       //     break;
       // }
+      const result = await readTransactionMutation.mutateAsync({ reward_address: account?.address });
+      setRewardAmount(Number(result));
+      console.log(rewardAmount);
       // Show the popup after successful swipe
       setIsPopupOpen(true);
-      setRewardAmount(0);
     } catch (error) {
       toast({
         title: `Error while sending transaction ${error}}`
@@ -184,7 +195,7 @@ export default function FaceMesh() {
       <Popup 
         isOpen={isPopupOpen} 
         onClose={() => setIsPopupOpen(false)}
-        rewardText={`You earned ${rewardAmount} diamonds!`}
+        rewardText={`You earned ${rewardAmount} chef's kiss!`}
       />
     </div>
   );
