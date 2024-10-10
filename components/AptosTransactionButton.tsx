@@ -32,9 +32,9 @@ export default function AptosTransactionButton() {
               onChange={(e) => setRecipient(e.target.value)}
             />
           </div>
-          <Button
+          {/* <Button
             onClick={() =>
-              sendTransactionMutation.mutate({ decision: 'alpha', recipient , account?.address})
+              sendTransactionMutation.mutate({ decision: 'alpha', recipient , account.address})
             }
             disabled={sendTransactionMutation.isPending}
             className="w-full"
@@ -42,7 +42,7 @@ export default function AptosTransactionButton() {
             {sendTransactionMutation.isPending
               ? 'Sending...'
               : 'Send Transaction'}
-          </Button>
+          </Button> */}
           {/* <Button
             onClick={readTransaction}
             disabled={isLoading}

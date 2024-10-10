@@ -24,9 +24,9 @@ type SendTransactionArgs = {
   recipient: string;
   reward_address: string;
 };
-// type Props = {
-//   recipientToQuery?: string;
-// };
+type Props = {
+  recipientToQuery?: string;
+};
 type ReadTransactionArgs = {
   reward_address: string;
 };
