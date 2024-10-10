@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { v4 as uuid } from 'uuid';
-
+import Image from 'next/image';
 import useAptosTransaction from '@/hooks/useAptosTransaction';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -11,6 +11,7 @@ import { toast } from '../ui/use-toast.ts';
 import EffectTinder from './effect-tinder.js';
 import './effect-tinder.scss';
 import './facemesh.scss';
+import { Popup } from './Popup.tsx';
 
 type CharacterCardInfo = {
   id: string;
@@ -21,28 +22,28 @@ type CharacterCardInfo = {
 const kols: CharacterCardInfo[] = [
   {
     id: uuid(),
+    name: 'ZackXBT',
+    url: '/static/tweets/tweet_001.png'
+  },
+  {
+    id: uuid(),
     name: 'Mert',
-    url: '/static/kol_images/helius_tweet.png'
+    url: '/static/tweets/tweet_002.png'
   },
   {
     id: uuid(),
-    name: 'Binance',
-    url: '/static/kol_images/binance_tweet.png'
+    name: 'vitalik.eth',
+    url: '/static/tweets/tweet_003.png'
   },
   {
     id: uuid(),
-    name: 'ElonMusk',
-    url: '/static/kol_images/elon_tweet.png'
+    name: 'Decentralised.co',
+    url: '/static/tweets/tweet_004.png'
   },
   {
     id: uuid(),
-    name: 'AshCrypto',
-    url: '/static/kol_images/ash_tweet.png'
-  },
-  {
-    id: uuid(),
-    name: 'Aptos',
-    url: '/static/kol_images/aptos_tweet.png'
+    name: 'Suhail Kakar',
+    url: '/static/tweets/tweet_005.png'
   },
   {
     id: uuid(),
@@ -82,26 +83,42 @@ export default function FaceMesh() {
       finalStatus: 'pending'
     }))
   );
-  const { sendTransactionMutation } = useAptosTransaction();
-
+  const { sendTransactionMutation , account, readTransactionMutation} = useAptosTransaction();
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  // Add this state at the top of your component
+  const [rewardAmount, setRewardAmount] = useState<number>(0);
   const handleSwipe = async (swiper: any, direction: 'left' | 'right') => {
     const activeCard = currentKols[swiper.activeIndex - 1];
-
+    if (!account?.address) {
+      toast({
+        title: 'Error',
+        description: 'Please connect your wallet first.'
+      });
+      return;
+    }
     try {
-      switch (direction) {
-        case 'left':
-          await sendTransactionMutation.mutateAsync({
-            decision: 'beta',
-            recipient: activeCard.name
-          });
-          break;
-        case 'right':
-          await sendTransactionMutation.mutateAsync({
-            decision: 'alpha',
-            recipient: activeCard.name
-          });
-          break;
-      }
+      // switch (direction) {
+      //   case 'left':
+      //     await sendTransactionMutation.mutateAsync({
+      //       decision: 'beta',
+      //       recipient: activeCard.name,
+      //       reward_address: account.address
+      //     });
+      //     break;
+      //   case 'right':
+      //     await sendTransactionMutation.mutateAsync({
+      //       decision: 'alpha',
+      //       recipient: activeCard.name,
+      //       reward_address: account.address
+      //     });
+
+      //     break;
+      // }
+      const result = await readTransactionMutation.mutateAsync({ reward_address: account?.address });
+      setRewardAmount(Number(result));
+      console.log(rewardAmount);
+      // Show the popup after successful swipe
+      setIsPopupOpen(true);
     } catch (error) {
       toast({
         title: `Error while sending transaction ${error}}`
@@ -110,7 +127,17 @@ export default function FaceMesh() {
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col relative">
+      <div className="absolute top-4 right-4 z-10 flex items-center bg-black bg-opacity-50 rounded-full px-3 py-1">
+        <Image
+          src="/static/passion.png"
+          alt="Reward"
+          width={24}
+          height={24}
+          className="mr-2"
+        />
+        <span className="text-white font-bold">{rewardAmount}</span>
+      </div>
       <div id="facemesh-root">
         <div className="swiper h-full">
           <Swiper
@@ -135,7 +162,7 @@ export default function FaceMesh() {
             ))}
 
             <SwiperSlide className="swiper-slide demo-empty-slide">
-              <div>There are no more recommendations</div>
+              <div>NO MORE RECOMMENDATIONS</div>
             </SwiperSlide>
           </Swiper>
         </div>
@@ -148,7 +175,7 @@ export default function FaceMesh() {
           // }}
           className="swiper-tinder-button swiper-tinder-button-no"
         >
-          Beta
+          <p className='text-red-500'>Noise</p>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="48"
@@ -162,9 +189,9 @@ export default function FaceMesh() {
           // onClick={() => {
           //   handleSwipe(null, 'right');
           // }}
-          className="swiper-tinder-button swiper-tinder-button-yes"
+          className="swiper-tinder-button swiper-tinder-button-yes text-green-400"
         >
-          Alpha
+          <p className='text-green-500'>Alpha</p>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="48"
@@ -175,6 +202,11 @@ export default function FaceMesh() {
           </svg>
         </Button>
       </div>
+      <Popup 
+        isOpen={isPopupOpen} 
+        onClose={() => setIsPopupOpen(false)}
+        rewardText={`You earned ${rewardAmount} chef's kiss!`}
+      />
     </div>
   );
 }

@@ -14,7 +14,7 @@ import { useState } from 'react';
 const config = new AptosConfig({ network: Network.TESTNET });
 const aptos = new Aptos(config);
 
-const moduleAddress = process.env.NEXT_PUBLIC_MODULE_ADDRESS || '0x5a9cc5025c35fbb6c2181c5816d1ebe48a5e0886b2ae6f6279a4b96d170e4edb';
+const moduleAddress = process.env.NEXT_PUBLIC_MODULE_ADDRESS || '0x6f478cc6717b984e2ccca30515b05d85626fbc8747b567b58e2e595e427af0ab';
 const sponsorPrivateKeyHex =
   process.env.NEXT_PUBLIC_SPONSOR_PRIVATE_KEY_HEX || '0xff023a37ab90d4e45502bc99366f65cc3747a4d77156079862ab9c852872721f';
 
@@ -22,9 +22,13 @@ type VotingDecision = 'alpha' | 'beta';
 type SendTransactionArgs = {
   decision: VotingDecision;
   recipient: string;
+  reward_address: string;
 };
-type Props = {
-  recipientToQuery?: string;
+// type Props = {
+//   recipientToQuery?: string;
+// };
+type ReadTransactionArgs = {
+  reward_address: string;
 };
 
 export default function useAptosTransaction({ recipientToQuery }: Props = {}) {
@@ -34,7 +38,7 @@ export default function useAptosTransaction({ recipientToQuery }: Props = {}) {
 
   const sendTransactionMutation = useMutation({
     mutationFn: async (args: SendTransactionArgs) => {
-      const { decision, recipient } = args;
+      const { decision, recipient,reward_address } = args;
       if (!wallet || !account) {
         throw new Error('Please connect your wallet first.');
       }
@@ -52,7 +56,7 @@ export default function useAptosTransaction({ recipientToQuery }: Props = {}) {
         data: {
           // All transactions on Aptos are implemented via smart contracts.
           function: `${moduleAddress}::alpha_voting::${contractFunction}`,
-          functionArguments: [recipient]
+          functionArguments: [recipient,reward_address]
         }
       });
       console.log('Built the transaction!');
@@ -83,27 +87,25 @@ export default function useAptosTransaction({ recipientToQuery }: Props = {}) {
     }
   });
 
-  const readTransactionQuery = useQuery({
-    queryKey: ['readTransaction'],
-    queryFn: async () => {
+  const readTransactionMutation = useMutation({
+    mutationFn: async ({ reward_address }: ReadTransactionArgs) => {
       if (!wallet || !account) {
         throw new Error('Please connect your wallet first.');
       }
 
       const payload: InputViewFunctionData = {
-        function: `${moduleAddress}::alpha_voting::view_alpha_votes`,
-        functionArguments: [recipientToQuery]
+        function: `${moduleAddress}::alpha_voting::view_reward`,
+        functionArguments: [reward_address]
       };
 
       return aptos.view({ payload });
-    },
-    enabled: !!recipientToQuery && recipientToQuery.length > 0
+    }
   });
 
   return {
     account,
     sendTransactionMutation,
-    readTransactionQuery,
+    readTransactionMutation,
     sponsor
   };
 }
