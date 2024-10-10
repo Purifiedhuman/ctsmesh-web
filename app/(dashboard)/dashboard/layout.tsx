@@ -3,8 +3,8 @@ import Sidebar from '@/components/layout/sidebar';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'CtSmesh Dashboard',
-  description: 'Dashboard for CtSmesh'
+  title: 'Cook App',
+  description: 'Alpha vs Noise! Let them cook!'
 };
 
 export default function DashboardLayout({

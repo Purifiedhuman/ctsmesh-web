@@ -152,7 +152,7 @@ export const Popup: React.FC<PopupProps> = ({ isOpen, onClose, rewardText }) => 
             animate={{ opacity: isBoxOpen ? 1 : 0, y: isBoxOpen ? 0 : 20 }}
             transition={{ delay: 1.2, duration: 0.5 }}
           >
-            <p className="text-xl font-bold text-white">{rewardText}</p>
+            <p className="text-xl font-bold text-[#FFB266]">{rewardText}</p>
           </motion.div>
         </div>
       </DialogContent>

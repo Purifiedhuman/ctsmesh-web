@@ -7,10 +7,10 @@ export default function page() {
   return (
     <>
       <div className="flex-1 space-y-1 md:p-8">
-        <BreadCrumb items={breadcrumbItems} />
+        {/* <BreadCrumb items={breadcrumbItems} /> */}
 
-        <div className="flex items-start justify-center">
-          <Heading title={`Lets Cook!`} description="Swipe the alpha post! Gas is sponsored!" />
+        <div className="flex items-start justify-center mt-10 mb-10 text-center">
+          <Heading title={`Let's Cook!🔥`} description="Swipe to earn! Gas is sponsored!" />
         </div>
 
         <FaceMesh />

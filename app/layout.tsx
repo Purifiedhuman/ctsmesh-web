@@ -4,11 +4,11 @@ import { Toaster } from '@/components/ui/toaster';
 import TanstackProvider from '@/providers/TanstackProvider';
 import '@uploadthing/react/styles.css';
 import type { Metadata, Viewport } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter , Sixtyfour} from 'next/font/google';
 import NextTopLoader from 'nextjs-toploader';
 import './globals.css';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Sixtyfour({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Next Shadcn',
@@ -39,7 +39,7 @@ export default async function RootLayout({
   const session = await auth();
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} overflow-x-hidden`}>
+      <body className={`${inter.className} overflow-x-hidden shadow-lg bg-[#1a1b3a] `}>
         <NextTopLoader />
         <Providers session={session}>
           <Toaster />
