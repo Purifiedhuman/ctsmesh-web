@@ -58,6 +58,61 @@ const tweets = [
     likes: 8900,
     comments: 567,
     retweets: 2100
+  },
+  {
+    id: 6,
+    author: 'db',
+    handle: '@tier10k',
+    avatar: '/static/tweets/tweet_006.png',
+    content: 'Wow this case get even more insane',
+    image: '/static/tweets/tweet_006.png',
+    likes: 99,
+    comments: 10,
+    retweets: 398
+  },
+  {
+    id: 7,
+    author: 'Cheeezzyyyy',
+    handle: '@0xCheeezzyyyy',
+    avatar: '/static/tweets/tweet_007.png',
+    content: 'MegaETH',
+    image: '/static/tweets/tweet_007.png',
+    likes: 669,
+    comments: 90,
+    retweets: 500
+  },
+  {
+    id: 8,
+    author: 'Optimism',
+    handle: '@Optimism',
+    avatar: '/static/tweets/tweet_008.png',
+    content: 'Onchain together, benefit together.',
+    image: '/static/tweets/tweet_008.png',
+    likes: 3982,
+    comments: 5000,
+    retweets: 7590
+  },
+  {
+    id: 9,
+    author: 'TradWife Capital',
+    handle: '@TradWifeCapital',
+    avatar: '/static/tweets/tweet_009.png',
+    content: 'An in-depth analysis on @brian_armstrong"s new wife. ',
+    image: '/static/tweets/tweet_009.png',
+    likes: 980,
+    comments: 287,
+    retweets: 409
+  },
+  {
+    id: 10,
+    author: 'Coingecko',
+    handle: '@coingecko',
+    avatar: '/static/tweets/tweet_010.png',
+    content: 'The #crypto market got me feeling like Moo Deng',
+    image: '/static/tweets/tweet_010.png',
+    likes: 51000,
+    comments: 500,
+    retweets: 7865
   }
 ]
 

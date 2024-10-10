@@ -47,23 +47,28 @@ const kols: CharacterCardInfo[] = [
   },
   {
     id: uuid(),
-    name: 'Vitalik',
-    url: '/static/kol_images/vitalik_tweet.png'
+    name: 'db',
+    url: '/static/tweets/tweet_006.png'
   },
   {
     id: uuid(),
-    name: 'Avery',
-    url: '/static/kol_images/avery_tweet.png'
+    name: 'Cheeezzyyyy',
+    url: '/static/tweets/tweet_007.png'
   },
   {
     id: uuid(),
-    name: 'Ardizor',
-    url: '/static/kol_images/ardizor_tweet.png'
+    name: 'Optimism',
+    url: '/static/tweets/tweet_008.png'
   },
   {
     id: uuid(),
-    name: 'Yano',
-    url: '/static/kol_images/yano_tweet.png'
+    name: 'TradWife Capital',
+    url: '/static/tweets/tweet_009.png'
+  },
+  {
+    id: uuid(),
+    name: 'Coingecko',
+    url: '/static/tweets/tweet_010.png'
   }
 ];
 
