@@ -9,7 +9,7 @@ export default function page() {
       <div className="flex-1 space-y-1 md:p-8">
         {/* <BreadCrumb items={breadcrumbItems} /> */}
 
-        <div className="flex items-start justify-center mt-10 mb-10 text-center">
+        <div className="flex items-start justify-center p-10 text-center">
           <Heading title={`Let's Cook!🔥`} description="Swipe to earn! Gas is sponsored!" />
         </div>
 
