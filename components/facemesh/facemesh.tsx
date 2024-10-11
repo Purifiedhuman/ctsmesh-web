@@ -117,7 +117,7 @@ export default function FaceMesh() {
       switch (direction) {
         case 'left':
           await sendTransactionMutation.mutateAsync({
-            decision: 'beta',
+            decision: 'noise',
             recipient: activeCard.tweet,
             reward_address: account.address
           });

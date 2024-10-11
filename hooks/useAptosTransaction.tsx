@@ -18,7 +18,7 @@ const moduleAddress = process.env.NEXT_PUBLIC_MODULE_ADDRESS || '0x63278981c03c4
 const sponsorPrivateKeyHex =
   process.env.NEXT_PUBLIC_SPONSOR_PRIVATE_KEY_HEX || '0xff023a37ab90d4e45502bc99366f65cc3747a4d77156079862ab9c852872721f';
 
-type VotingDecision = 'alpha' | 'beta';
+type VotingDecision = 'alpha' | 'noise';
 type SendTransactionArgs = {
   decision: VotingDecision;
   recipient: string;
@@ -44,7 +44,7 @@ export default function useAptosTransaction({ recipientToQuery }: Props = {}) {
       }
 
       const contractFunction =
-        decision === 'alpha' ? 'vote_alpha' : 'vote_beta';
+        decision === 'alpha' ? 'vote_alpha' : 'vote_noise';
       console.log('\n=== Submitting Transaction ===\n');
 
       const privateKey = new Ed25519PrivateKey(sponsorPrivateKeyHex);

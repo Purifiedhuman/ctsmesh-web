@@ -252,7 +252,7 @@ module alpha_voting_addr::alpha_voting {
     public entry fun test_voting_and_rewards(account: signer) acquires Votes, AccountVotes, RewardTable {
         let account_addr = signer::address_of(&account);
         
-        // Vote for alpha and beta
+        // Vote for alpha and noise
         vote_alpha(&account, utf8(b"tweet1"), account_addr);
         vote_noise(&account, utf8(b"tweet1"), account_addr);
         vote_alpha(&account, utf8(b"tweet1"), account_addr);
