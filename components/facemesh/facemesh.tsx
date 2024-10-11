@@ -136,17 +136,19 @@ export default function FaceMesh() {
 
   return (
     <>
-      <div className="absolute right-10 top-[7.3rem] z-10 flex items-center rounded-full bg-black bg-opacity-50 px-3 py-1 md:right-[90px] md:top-36">
-        <Image
-          src="/static/passion.png"
-          alt="Reward"
-          width={24}
-          height={24}
-          className="mr-2"
-        />
-        <span className="font-bold text-white">{rewardAmount}</span>
+      <div className="flex flex-col">
+        <div className="mx-3 mb-2 flex items-center self-end rounded-full bg-black bg-opacity-50 px-3 py-1 md:mx-10 md:mb-0">
+          <Image
+            src="/static/passion.png"
+            alt="Reward"
+            width={24}
+            height={24}
+            className="mr-2"
+          />
+          <span className="font-bold text-white">{rewardAmount}</span>
+        </div>
       </div>
-      <div className="relative flex flex-col">
+      <div className="flex flex-col">
         <div id="facemesh-root">
           <div className="swiper h-full">
             <Swiper
