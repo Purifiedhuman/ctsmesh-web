@@ -45,7 +45,6 @@
 .swiper-tinder-button {
   cursor: pointer;
   bottom: 32px;
-  color: #e7e0e0c9;
   // width: var(--swiper-tinder-button-size);
   height: var(--swiper-tinder-button-size);
   border: 1px solid;
@@ -71,6 +70,7 @@
     pointer-events: none;
   }
   &-no {
+    color: var(--swiper-tinder-no-color);
     border-color: var(--swiper-tinder-no-color);
     left: calc(33% - 28px);
     svg {
@@ -79,6 +79,7 @@
     &.swiper-tinder-button-active,
     &:active,
     &:hover {
+      color: #e7e0e0c9;
       background: var(--swiper-tinder-no-color);
       svg {
         fill: #fff;
@@ -86,6 +87,7 @@
     }
   }
   &-yes {
+    color: var(--swiper-tinder-yes-color);
     border-color: var(--swiper-tinder-yes-color);
     left: calc(66% - 28px);
     svg {
@@ -94,6 +96,7 @@
     &.swiper-tinder-button-active,
     &:active,
     &:hover {
+      color: #e7e0e0c9;
       background: var(--swiper-tinder-yes-color);
       svg {
         fill: #fff;
