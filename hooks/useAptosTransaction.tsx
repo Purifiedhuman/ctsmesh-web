@@ -14,7 +14,7 @@ import { useState } from 'react';
 const config = new AptosConfig({ network: Network.TESTNET });
 const aptos = new Aptos(config);
 
-const moduleAddress = process.env.NEXT_PUBLIC_MODULE_ADDRESS || '0x6f478cc6717b984e2ccca30515b05d85626fbc8747b567b58e2e595e427af0ab';
+const moduleAddress = process.env.NEXT_PUBLIC_MODULE_ADDRESS || '0x63278981c03c45fb270f468a2e157bc32b48f8b0e6e65eaa4c8705c179b5a6f9';
 const sponsorPrivateKeyHex =
   process.env.NEXT_PUBLIC_SPONSOR_PRIVATE_KEY_HEX || '0xff023a37ab90d4e45502bc99366f65cc3747a4d77156079862ab9c852872721f';
 

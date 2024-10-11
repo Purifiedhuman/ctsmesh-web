@@ -171,10 +171,11 @@ module alpha_voting_addr::alpha_voting {
 
         let reward_table = borrow_global_mut<RewardTable>(@alpha_voting_addr);
         if (!table::contains(&reward_table.rewards, reward_address)) {
-            table::add(&mut reward_table.rewards, reward_address, 0);
+            table::add(&mut reward_table.rewards, reward_address, reward_value);
+        } else {
+            let current_reward = table::borrow_mut(&mut reward_table.rewards, reward_address);
+            *current_reward = reward_value; // Directly set the new reward value, overwriting the previous value
         };
-        let current_reward = table::borrow_mut(&mut reward_table.rewards, reward_address);
-        *current_reward = *current_reward + reward_value;
     }
     #[view]
     public fun view_reward(reward_address: address): u64 acquires RewardTable {

@@ -16,6 +16,7 @@ import { Popup } from './Popup.tsx';
 type CharacterCardInfo = {
   id: string;
   name: string;
+  tweet:string;
   url: string;
 };
 
@@ -23,51 +24,61 @@ const kols: CharacterCardInfo[] = [
   {
     id: uuid(),
     name: 'ZackXBT',
+    tweet:'tweet001',
     url: '/static/tweets/tweet_001.png'
   },
   {
     id: uuid(),
     name: 'Mert',
+    tweet:'tweet002',
     url: '/static/tweets/tweet_002.png'
   },
   {
     id: uuid(),
     name: 'vitalik.eth',
+    tweet:'tweet003',
     url: '/static/tweets/tweet_003.png'
   },
   {
     id: uuid(),
     name: 'Decentralised.co',
+    tweet:'tweet004',
     url: '/static/tweets/tweet_004.png'
   },
   {
     id: uuid(),
     name: 'Suhail Kakar',
+    tweet:'tweet005',
     url: '/static/tweets/tweet_005.png'
   },
   {
     id: uuid(),
     name: 'db',
+    tweet:'tweet006',
     url: '/static/tweets/tweet_006.png'
   },
   {
     id: uuid(),
     name: 'Cheeezzyyyy',
+    tweet:'tweet007',
     url: '/static/tweets/tweet_007.png'
   },
   {
     id: uuid(),
     name: 'Optimism',
+    tweet:'tweet008',
     url: '/static/tweets/tweet_008.png'
   },
   {
     id: uuid(),
     name: 'TradWife Capital',
+    tweet:'tweet009',
     url: '/static/tweets/tweet_009.png'
   },
   {
     id: uuid(),
     name: 'Coingecko',
+    tweet:'tweet010',
     url: '/static/tweets/tweet_010.png'
   }
 ];
@@ -91,8 +102,8 @@ export default function FaceMesh() {
   const { sendTransactionMutation, account, readTransactionMutation } =
     useAptosTransaction();
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-  // Add this state at the top of your component
   const [rewardAmount, setRewardAmount] = useState<number>(0);
+  const [totalReward, setTotalReward] = useState<number>(0);
   const handleSwipe = async (swiper: any, direction: 'left' | 'right') => {
     const activeCard = currentKols[swiper.activeIndex - 1];
     if (!account?.address) {
@@ -103,27 +114,28 @@ export default function FaceMesh() {
       return;
     }
     try {
-      // switch (direction) {
-      //   case 'left':
-      //     await sendTransactionMutation.mutateAsync({
-      //       decision: 'beta',
-      //       recipient: activeCard.name,
-      //       reward_address: account.address
-      //     });
-      //     break;
-      //   case 'right':
-      //     await sendTransactionMutation.mutateAsync({
-      //       decision: 'alpha',
-      //       recipient: activeCard.name,
-      //       reward_address: account.address
-      //     });
+      switch (direction) {
+        case 'left':
+          await sendTransactionMutation.mutateAsync({
+            decision: 'beta',
+            recipient: activeCard.tweet,
+            reward_address: account.address
+          });
+          break;
+        case 'right':
+          await sendTransactionMutation.mutateAsync({
+            decision: 'alpha',
+            recipient: activeCard.tweet,
+            reward_address: account.address
+          });
 
-      //     break;
-      // }
+          break;
+      }
       const result = await readTransactionMutation.mutateAsync({
         reward_address: account?.address
       });
       setRewardAmount(Number(result));
+      setTotalReward(prevAmount => prevAmount + Number(result));
       console.log(rewardAmount);
       // Show the popup after successful swipe
       setIsPopupOpen(true);
@@ -145,7 +157,7 @@ export default function FaceMesh() {
             height={24}
             className="mr-2"
           />
-          <span className="font-bold text-white">{rewardAmount}</span>
+          <span className="font-bold text-white">{totalReward}</span>
         </div>
       </div>
       <div className="flex flex-col">

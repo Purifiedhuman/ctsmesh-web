@@ -13,5 +13,6 @@ Full aptos deploy guide [here](https://aptos.dev/en/build/smart-contracts/deploy
 
 
 ## Move object address
+0x63278981c03c45fb270f468a2e157bc32b48f8b0e6e65eaa4c8705c179b5a6f9 (p3)
 0x6f478cc6717b984e2ccca30515b05d85626fbc8747b567b58e2e595e427af0ab (p2)
 0x5a9cc5025c35fbb6c2181c5816d1ebe48a5e0886b2ae6f6279a4b96d170e4edb (p1)
