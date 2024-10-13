@@ -130,17 +130,18 @@ export const navItems: NavItem[] = [
   //   icon: 'employee',
   //   label: 'employee'
   // },
-  // {
-  //   title: 'Kanban',
-  //   href: '/dashboard/kanban',
-  //   icon: 'kanban',
-  //   label: 'kanban'
-  // },
+
   {
     title: 'Cook',
     href: '/dashboard/facemesh',
     icon: 'kanban',
     label: 'cook'
+  },
+  {
+    title: 'Secret Recipe',
+    href: '/dashboard/kanban',
+    icon: 'pizza',
+    label: 'kanban'
   },
   {
     title: 'Profile',
