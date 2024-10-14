@@ -1,10 +1,15 @@
 ## Project Overview
-![Lets Cook!] (https://cdn.dorahacks.io/static/files/1928685a1b1215cfcceb82f432895c74.png)
+![Lets Cook!](https://cdn.dorahacks.io/static/files/1928685a1b1215cfcceb82f432895c74.png)
 Introducing Cook App - Powered by Aptos.
 
 Your fastest and most fun way to participate & get the latest alpha in crypto. Oh, and earn while you swipe!
 
 In a normie explanation, cook app is a fun social discovery platform that rewards users who contribute to filtering out great value content from noise, and for those who wants to consume top level summary of alpha from whitelisted accounts.
+
+## BUIDL Details
+1. Sample move object code has been deployed and may refer [here](https://explorer.aptoslabs.com/object/0x63278981c03c45fb270f468a2e157bc32b48f8b0e6e65eaa4c8705c179b5a6f9/modules/code/alpha_voting?network=testnet). 
+
+2. Official dorahacks buidl has been submitted [here](https://dorahacks.io/buidl/16797/)
 
 ## Tech Stack Overview
 
@@ -42,11 +47,6 @@ You should now be able to access the application at http://localhost:3000.
 4. aptos move deploy-object --address-name <your_module_name> --skip-fetch-latest-git-deps
 
 Full aptos deploy guide [here](https://aptos.dev/en/build/smart-contracts/deployment) .
-
-# More Details
-1. Sample move object code has been deployed and may refer [here](https://explorer.aptoslabs.com/object/0x63278981c03c45fb270f468a2e157bc32b48f8b0e6e65eaa4c8705c179b5a6f9/modules/code/alpha_voting?network=testnet). 
-
-2. Official dorahacks buidl has been submitted [here](https://dorahacks.io/buidl/16797/)
 
 
 ## License
