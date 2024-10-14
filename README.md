@@ -11,6 +11,9 @@ In a normie explanation, cook app is a fun social discovery platform that reward
 
 2. Official dorahacks buidl has been submitted [here](https://dorahacks.io/buidl/16797/)
 
+3. Live Demo available at:
+- Telegram: https://t.me/Cook_testing123_bot (start with typing "/start)" in the bot.(Please sign-in with Mizu wallet as Aptos Connect has a bug. Already reported at https://github.com/aptos-labs/aptos-developer-discussions/discussions/482 )
+
 ## Tech Stack Overview
 
 - Framework - [Next.js 14](https://nextjs.org/13)
