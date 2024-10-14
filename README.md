@@ -1,4 +1,4 @@
-## Project Overview
+# Project Overview
 ![Lets Cook!](https://cdn.dorahacks.io/static/files/1928685a1b1215cfcceb82f432895c74.png)
 Introducing Cook App - Powered by Aptos.
 
@@ -30,7 +30,7 @@ In a normie explanation, cook app is a fun social discovery platform that reward
 
 Follow these steps to clone the repository and start the development server:
 
-- `git clone https://github.com/Kiranism/next-shadcn-dashboard-starter.git`
+- `git clone https://github.com/Purifiedhuman/ctsmesh-web.git`
 - `npm install`
 - Create a `.env.local` file by copying the example environment file:
   `cp env.example.txt .env.local`
@@ -39,7 +39,7 @@ Follow these steps to clone the repository and start the development server:
 
 You should now be able to access the application at http://localhost:3000.
 
-# Example Move Source code compile
+## Example Move Source code compile
 
 1. cd into your move directory folder
 2. aptos init
