@@ -138,7 +138,7 @@ export const navItems: NavItem[] = [
     label: 'cook'
   },
   {
-    title: 'Secret Recipe',
+    title: 'Alpha Timeline',
     href: '/dashboard/kanban',
     icon: 'pizza',
     label: 'kanban'
