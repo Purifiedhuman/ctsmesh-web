@@ -1,13 +1,14 @@
+import { auth } from '@/auth';
 import Providers from '@/components/layout/providers';
 import { Toaster } from '@/components/ui/toaster';
+import TanstackProvider from '@/providers/TanstackProvider';
 import '@uploadthing/react/styles.css';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
+import { Inter , Sixtyfour} from 'next/font/google';
 import NextTopLoader from 'nextjs-toploader';
-import { Inter } from 'next/font/google';
 import './globals.css';
-import { auth } from '@/auth';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Sixtyfour({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Next Shadcn',
@@ -16,12 +17,18 @@ export const metadata: Metadata = {
   manifest: '/manifest.json',
   keywords: ['nextjs', 'nextjs13', 'next13', 'pwa', 'next-pwa'],
   // themeColor: [{ media: '(prefers-color-scheme: dark)', color: '#fff' }],
-  viewport:
-    'minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover',
+
   icons: [
     { rel: 'apple-touch-icon', url: 'static/icons/icon-144x144.png' },
     { rel: 'icon', url: 'static/icons/icon-144x144.png' }
   ]
+};
+
+export const viewport: Viewport = {
+  minimumScale: 1,
+  initialScale: 1,
+  width: 'device-width',
+  viewportFit: 'cover'
 };
 
 export default async function RootLayout({
@@ -32,11 +39,11 @@ export default async function RootLayout({
   const session = await auth();
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} overflow-hidden`}>
+      <body className={`${inter.className} overflow-x-hidden shadow-lg bg-[#1a1b3a] `}>
         <NextTopLoader />
         <Providers session={session}>
           <Toaster />
-          {children}
+          <TanstackProvider>{children}</TanstackProvider>
         </Providers>
       </body>
     </html>

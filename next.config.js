@@ -7,6 +7,14 @@ const nextConfig = {
   images: {
     domains: ['utfs.io']
   },
+  async rewrites() {
+    return [
+      {
+        source: '/',
+        destination: '/dashboard/page'
+      }
+    ];
+  },
   output: 'standalone'
 };
 

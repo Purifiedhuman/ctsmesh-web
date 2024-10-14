@@ -3,8 +3,8 @@ import Sidebar from '@/components/layout/sidebar';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'CtSmesh Dashboard',
-  description: 'Dashboard for CtSmesh'
+  title: 'Cook App',
+  description: 'Alpha vs Noise! Let them cook!'
 };
 
 export default function DashboardLayout({
@@ -15,9 +15,9 @@ export default function DashboardLayout({
   return (
     <>
       <Header />
-      <div className="flex h-screen overflow-hidden">
+      <div className="flex h-screen">
         <Sidebar />
-        <main className="flex-1 overflow-hidden pt-16">{children}</main>
+        <main className="flex-1 pt-16">{children}</main>
       </div>
     </>
   );

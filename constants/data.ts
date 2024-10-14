@@ -130,28 +130,29 @@ export const navItems: NavItem[] = [
   //   icon: 'employee',
   //   label: 'employee'
   // },
-  // {
-  //   title: 'Profile',
-  //   href: '/dashboard/profile',
-  //   icon: 'profile',
-  //   label: 'profile'
-  // },
-  // {
-  //   title: 'Kanban',
-  //   href: '/dashboard/kanban',
-  //   icon: 'kanban',
-  //   label: 'kanban'
-  // },
+
   {
-    title: 'Facemesh',
+    title: 'Cook',
     href: '/dashboard/facemesh',
-    icon: 'laugh',
-    label: 'facemesh'
+    icon: 'kanban',
+    label: 'cook'
   },
   {
-    title: 'Login',
-    href: '/',
-    icon: 'login',
-    label: 'login'
+    title: 'Secret Recipe',
+    href: '/dashboard/kanban',
+    icon: 'pizza',
+    label: 'kanban'
+  },
+  {
+    title: 'Profile',
+    href: '/dashboard/profile',
+    icon: 'profile',
+    label: 'profile'
   }
+  // {
+  //   title: 'Login',
+  //   href: '/',
+  //   icon: 'login',
+  //   label: 'login'
+  // }
 ];

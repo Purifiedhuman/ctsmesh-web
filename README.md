@@ -1,48 +1,30 @@
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/9113740/201498864-2a900c64-d88f-4ed4-b5cf-770bcb57e1f5.png">
-  <source media="(prefers-color-scheme: light)" srcset="https://user-images.githubusercontent.com/9113740/201498152-b171abb8-9225-487a-821c-6ff49ee48579.png">
-</picture>
+## Project Overview
+![Lets Cook!](https://cdn.dorahacks.io/static/files/1928685a1b1215cfcceb82f432895c74.png)
+Introducing Cook App - Powered by Aptos.
 
-<div align="center"><strong>Next.js 14 Admin Dashboard Starter Template With Shadcn-ui</strong></div>
-<div align="center">Built with the Next.js App Router</div>
-<br />
-<div align="center">
-<a href="https://next-shadcn-dashboard-starter.vercel.app">View Demo</a>
-<span>
-</div>
+Your fastest and most fun way to participate & get the latest alpha in crypto. Oh, and earn while you swipe!
 
-## Overview
+In a normie explanation, cook app is a fun social discovery platform that rewards users who contribute to filtering out great value content from noise, and for those who wants to consume top level summary of alpha from whitelisted accounts.
 
-This is a starter template using the following stack:
+## BUIDL Details
+1. Sample move object code has been deployed and may refer [here](https://explorer.aptoslabs.com/object/0x63278981c03c45fb270f468a2e157bc32b48f8b0e6e65eaa4c8705c179b5a6f9/modules/code/alpha_voting?network=testnet). 
+
+2. Official dorahacks buidl has been submitted [here](https://dorahacks.io/buidl/16797/)
+
+## Tech Stack Overview
 
 - Framework - [Next.js 14](https://nextjs.org/13)
 - Language - [TypeScript](https://www.typescriptlang.org)
 - Styling - [Tailwind CSS](https://tailwindcss.com)
 - Components - [Shadcn-ui](https://ui.shadcn.com)
-- Schema Validations - [Zod](https://zod.dev)
-- State Management - [Zustand](https://zustand-demo.pmnd.rs)
-- Auth - [Auth.js](https://authjs.dev/)
-- File Uploading - [Uploadthing](https://uploadthing.com)
-- Tables - [Tanstack Tables](https://ui.shadcn.com/docs/components/data-table)
-- Forms - [React Hook Form](https://ui.shadcn.com/docs/components/form)
-- Linting - [ESLint](https://eslint.org)
-- Formatting - [Prettier](https://prettier.io)
+- Aptos Typescript SDK - [aptos-ts-sdk](https://aptos.dev/en/build/sdks/ts-sdk)
+- Move Smart Contract -[aptos-move](https://aptos.dev/en/build/smart-contracts)
+- Aptos Wallet Adapter/Mizu Wallet Sdk - [wallet-adapter](https://aptos.dev/en/build/sdks/wallet-adapter)
+- SwiperJS -[swiper](https://swiperjs.com/)
+- Nodit - [nodit](https://nodit.io/)
+- Tanstack React Query -[tanstack](https://tanstack.com/query/v3)
+- Framer Motion -[framer-motion](https://www.framer.com/motion/)
 
-_If you are looking for a React admin dashboard starter, here is the [repo](https://github.com/Kiranism/react-shadcn-dashboard-starter)._
-
-## Pages
-
-| Pages                                                                             | Specifications                                                                                        |
-| :-------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------- |
-| [Signup](https://next-shadcn-dashboard-starter.vercel.app/)                       | Authentication with **NextAuth** supports Social logins and email logins(Enter dummy email for demo). |
-| [Dashboard](https://next-shadcn-dashboard-starter.vercel.app/dashboard)           | Cards with recharts graphs for analytics.                                                             |
-| [Users](https://next-shadcn-dashboard-starter.vercel.app/dashboard/user)          | Tanstack tables with user details client side searching, pagination etc                               |
-| [Users/new](https://next-shadcn-dashboard-starter.vercel.app/dashboard/user/new)  | A User Form with Uploadthing to support file uploading with dropzone.                                 |
-| [Employee](https://next-shadcn-dashboard-starter.vercel.app/dashboard/employee)   | Tanstack tables with server side searching, pagination etc).                                          |
-| [Profile](https://next-shadcn-dashboard-starter.vercel.app/dashboard/profile)     | Mutistep dynamic forms using react-hook-form and zod for form validation.                             |
-| [Kanban Board](https://next-shadcn-dashboard-starter.vercel.app/dashboard/kanban) | A Drag n Drop task management board with dnd-kit and zustand to persist state locally.                |
-| [Not Found](https://next-shadcn-dashboard-starter.vercel.app/dashboard/notfound)  | Not Found Page Added in the root level                                                                |
-| -                                                                                 | -                                                                                                     |
 
 ## Getting Started
 
@@ -52,7 +34,21 @@ Follow these steps to clone the repository and start the development server:
 - `npm install`
 - Create a `.env.local` file by copying the example environment file:
   `cp env.example.txt .env.local`
-- Add the required environment variables to the `.env.local` file.
+- Add the required environment variables to the `.env.local` file. In this case, we will need `NEXT_PUBLIC_MODULE_ADDRESS` and `NEXT_PUBLIC_SPONSOR_PRIVATE_KEY_HEX` to make the project run. We have also provided default object address and sponsor private hex.
 - `npm run dev`
 
 You should now be able to access the application at http://localhost:3000.
+
+# Example Move Source code compile
+
+1. cd into your move directory folder
+2. aptos init
+3. aptos move compile --named-addresses <your_module_name>=<your_address>
+4. aptos move deploy-object --address-name <your_module_name> --skip-fetch-latest-git-deps
+
+Full aptos deploy guide [here](https://aptos.dev/en/build/smart-contracts/deployment) .
+
+
+## License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for more details.
